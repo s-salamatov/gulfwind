@@ -1,0 +1,49 @@
+{% extends "account/base.html" %}
+
+{% block head_title %}- Аккаунт не активен{% endblock %}
+
+{% block content %}
+    <div class="container-fluid">
+        <div class="row mt-3">
+            <div class="col-md-3"></div>
+            <div class="col-md-6">
+                <h1 class="text-center">Ой... Ваш аккаунт не активен :(</h1>
+                <hr>
+                <div class="alert alert-dark alert-dismissible fade show" role="alert">
+                    <p>Сейчас вы вошли как <a href="{# url 'profile' #}">{{ request.user }}
+                        ({{ request.user.get_full_name }})</a></p>
+                    <hr>
+                    <p class="mb-0"><span class="text-muted">Вы можете <a href="{% url 'account_logout' %}">выйти</a> или <a
+                            href="{# url 'profile' #}">посмотреть свой аккаунт</a></span></p>
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Закрыть">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <p>
+                    Это значит, что вы не перешли по ссылке в письме после регистрации.
+                    Возможно, ваш аккаунт был удален или заблокирован.
+                </p>
+                <p>
+                    Пока ваш аккаунт неактивен, <span class="text-danger"><strong>вы не можете полноценно пользоваться сайтом</strong></span>:
+                    работать с рапортами, запрашивать восстановление пароля и выполнять другие действия, связанные с
+                    вашим аккаунтом
+                </p>
+                <hr>
+                <h2>Что можно сделать?</h2>
+                <ul>
+                    <li><a href="{# url 'profile' #}">Проверьте данные в своем аккаунте</a></li>
+                    <li><a href="{% url 'account_email' %}">Запросите подтверждение email повторно</a></li>
+                    <li><a href="{% url 'account_email' %}">Добавьте новый email</a></li>
+                </ul>
+                <p>
+                    Попробуйте выполнить эти действия, чтобы сделать аккаунт активным. Если ничего не помогло или вам
+                    требуется помощь, <a href="#">обратитесь в поддержку</a>.
+                    <br>
+                    <span class="text-muted">Мы очень ценим ваше и наше время. Перед обращением в поддержку, посетите раздел со <a
+                            href="#">справочными материалами</a>. Это может вам помочь. </span>
+                </p>
+            </div>
+            <div class="col-md-3"></div>
+        </div>
+    </div>
+{% endblock %}

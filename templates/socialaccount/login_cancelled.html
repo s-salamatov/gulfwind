@@ -1,0 +1,19 @@
+{% extends "socialaccount/base.html" %}
+
+{% block head_title %}- Авторизация отменена{% endblock %}
+
+{% block content %}
+    <div class="container-fluid">
+        <div class="row mt-3">
+            <div class="col-md-3"></div>
+            <div class="col-md-6">
+                <h1 class="text-center">Авторизация отменена</h1>
+                <hr>
+                {% url 'account_login' as login_url %}
+                <p>Вы отменили авторизацию на сайте социальной сети. Если это была ошибка, <a href="{{ login_url }}">войдите</a>
+                    снова.</p>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

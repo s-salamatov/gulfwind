@@ -1,0 +1,38 @@
+{% extends "account/base.html" %}
+{% load crispy_forms_filters %}
+
+{% block head_title %}- Регистрация{% endblock %}
+
+{% block content %}
+    <div class="container-fluid">
+        <div class="row mt-3">
+            <div class="col-md-3"></div>
+            <div class="col-md-6">
+                <h1 class="text-center">Регистрация</h1>
+                <hr>
+                <p class="text-muted">Уже зарегистрированы? <a href="{{ login_url }}">Войдите</a>.</p>
+                <div class="row">
+                    <div class="col-md-1"></div>
+                    <div class="col-md-10">
+                        <form class="signup" id="signup_form" method="post" action="{% url 'account_signup' %}">
+                            {% csrf_token %}
+                            {{ form|crispy }}
+                            {% if redirect_field_value %}
+                                <input type="hidden" name="{{ redirect_field_name }}"
+                                       value="{{ redirect_field_value }}"/>
+                            {% endif %}
+                            <div class="row">
+                                <div class="col-md-3"></div>
+                                <div class="col-md-6">
+                                    <button type="submit" class="btn btn-outline-dark btn-block">
+                                        Зарегистрироваться &raquo;
+                                    </button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,20 @@
+{% extends "account/base.html" %}
+
+{% block head_title %}- Подтвердите свой email{% endblock %}
+
+{% block content %}
+    <div class="container-fluid">
+        <div class="row mt-3">
+            <div class="col-md-3"></div>
+            <div class="col-md-6">
+                <h1 class="text-center">Подтвердите свой email</h1>
+                <hr>
+                {% url 'account_email' as email_url %}
+                <p>К сожалению, вам сюда нельзя. Вы не можете полноценно пользоваться сайтом, пока не подтвердите свой
+                    email, указанный при регистрации.</p>
+                <p>Мы отправили вам письмо с подтверждением регистрации. Проверьте почту.</p>
+                <p>Вы все еще можете <a href="{{ email_url }}">изменить адрес электронной почты</a></p>
+            </div>
+        </div>
+    </div>
+{% endblock %}

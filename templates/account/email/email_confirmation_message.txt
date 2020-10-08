@@ -1,0 +1,19 @@
+{% load account %}{% user_display user as user_display %}{% load i18n %}{% autoescape off %}{% blocktrans with site_name=current_site.name site_domain=current_site.domain %}
+На связи {{ site_name }}!
+
+Вы получили это письмо, потому что он был указан при регистрации аккаунта {{ user_display }} на сайте {{ site_domain }}.
+
+Чтобы подтвердить почту, перейдите по ссылке ниже.
+
+{{ activate_url }}
+
+Если у вас не получатся перейти по ссылке, скопируйте и вставьте ее в браузер.
+
+Проигнорируйте это письмо, если вы не регистрировались на сайте {{ site_name }}!
+
+--
+С уважением,
+команда сайта {{ site_name }}
+{% endblocktrans %}
+{% endautoescape %}
+

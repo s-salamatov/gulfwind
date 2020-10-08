@@ -1,0 +1,55 @@
+{% extends 'account/base.html' %}
+{% load crispy_forms_filters %}
+{% load account socialaccount %}
+{% load crispy_forms_tags %}
+{% load static %}
+
+{% block head_title %}- Войти{% endblock %}
+
+{% block content %}
+    <div class="container-fluid">
+        <div class="row mt-3">
+            <div class="col-md-3"></div>
+            <div class="col-md-6">
+                <h1 class="text-center">Войти</h1>
+                <hr>
+                {% get_providers as socialaccount_providers %}
+                {% if socialaccount_providers %}
+                    {% for provider in socialaccount_providers %}
+                        <p>
+                            <a href="{% provider_login_url provider.id process=process scope=scope auth_params=auth_params %}">Войдите
+                                через ВКонтакте</a> или <a class="text-decoration-none" data-toggle="collapse"
+                                                           href="#collapseLoginForm" role="button" aria-expanded="false"
+                                                           aria-controls="collapseLoginForm">введите логин/пароль</a>.
+                            Вы также можете <a href="{{ signup_url }}">зарегистрироваться</a> и авторизоваться на сайте
+                        </p>
+                    {% endfor %}
+                    {% include "socialaccount/snippets/login_extra.html" %}
+                {% endif %}
+                <div class="collapse" id="collapseLoginForm">
+                    <div class="row">
+                        <div class="col-md-1"></div>
+                        <div class="col-md-10">
+                            <form class="login" method="POST" action="{% url 'account_login' %}">
+                                {% csrf_token %}
+                                {{ form|crispy }}
+                                {% if redirect_field_value %}
+                                    <input type="hidden" name="{{ redirect_field_name }}"
+                                           value="{{ redirect_field_value }}"/>
+                                {% endif %}
+                                <a class="" href="{% url 'account_reset_password' %}">Забыли пароль?</a><br>
+                                <div class="row">
+                                    <div class="col-md-4"></div>
+                                    <div class="col-md-4">
+                                        <button class="btn btn-outline-dark btn-block" type="submit">Войти</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3"></div>
+        </div>
+    </div>
+{% endblock %}
