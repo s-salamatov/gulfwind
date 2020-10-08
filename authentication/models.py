@@ -58,8 +58,6 @@ class User(AbstractBaseUser, PermissionsMixin, TimestampedModel):
     objects = UserManager()
 
     class Meta:
-        verbose_name = 'пользователь'
-        verbose_name_plural = 'пользователи'
         abstract = False
 
     def clean(self):
@@ -67,7 +65,7 @@ class User(AbstractBaseUser, PermissionsMixin, TimestampedModel):
         self.email = self.__class__.objects.normalize_email(self.email)
 
     def __str__(self):
-        return self.email
+        return self.username
 
     def save(self, *args, **kwargs):
         super().save(*args, **kwargs)
