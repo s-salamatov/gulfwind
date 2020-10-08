@@ -38,7 +38,6 @@ class UserManager(BaseUserManager):
 
 class User(AbstractBaseUser, PermissionsMixin, TimestampedModel):
     id = models.UUIDField('ID', primary_key=True, default=uuid.uuid4, editable=False)
-    readable_id = models.AutoField(auto_created=True, verbose_name='readable_id', editable=False)
     secret_hash = models.UUIDField('хэш', default=uuid.uuid4, editable=False)
 
     username = models.CharField(db_index=True, max_length=255, unique=True)
