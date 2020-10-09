@@ -1,4 +1,5 @@
 from django.db import models
+from django.urls import reverse
 
 from core.models import TimestampedModel
 
@@ -15,6 +16,9 @@ class Profile(TimestampedModel):
 
     def __str__(self):
         return self.user.username
+
+    def get_absolute_url(self):
+        return reverse('profiles:detail', username=self.user.username)
 
     def get_full_name(self):
         full_name = '%s %s %s' % (self.first_name, self.middle_name, self.last_name)
