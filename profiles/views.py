@@ -16,6 +16,7 @@ def profile_detail(request, username):
 
 
 def profile_create(request):
+    print(request.method)
     if request.method == 'GET':
         form = CreateProfileForm()
     if request.method == 'POST':

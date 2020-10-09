@@ -1,0 +1,33 @@
+{% extends "profiles/base.html" %}
+{% load crispy_forms_filters %}
+
+{% block head_title %}- Профиль{% endblock %}
+
+{% block content %}
+    <div class="container-fluid">
+        <div class="row mt-3">
+            <div class="col-md-3"></div>
+            <div class="col-md-6">
+                <h1 class="text-center">Заполните или обновите свой профиль</h1>
+                <hr>
+                <div class="row">
+                    <div class="col-md-1"></div>
+                    <div class="col-md-10">
+                        <form class="" id="" method="post" action="">
+                            {% csrf_token %}
+                            {{ form|crispy }}
+                            <div class="row">
+                                <div class="col-md-3"></div>
+                                <div class="col-md-6">
+                                    <button type="submit" class="btn btn-outline-dark btn-block">
+                                        Готово &raquo;
+                                    </button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

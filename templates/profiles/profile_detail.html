@@ -1,0 +1,32 @@
+{% extends 'profiles/base.html' %}
+{% load static %}
+
+{% block head_title %}– Аккаунт {{ user.username }}{% endblock %}
+
+{% block content %}
+<div class="container-fluid">
+    <div class="row mt-3">
+        <div class="col-md-3"></div>
+        <div class="col-md-6">
+            <h1 class="text-center">Аккаунт</h1>
+            <hr>
+            {% if request.user != user %}
+            {% include 'profiles/common_content' %}
+            {% elif request.user == user %}
+            <div class="row">
+                <div class="col-2">
+                    <img src="{% static 'profiles/img/avatar.png' %}" class="img-fluid rounded-circle" alt="">
+                </div>
+                <div class="col-10">
+                    <p class="align-center">
+                        <span class="h5"><strong>{{ user.profile.get_full_name }}</strong></span><br>
+                        <span class="text-muted">{{ user.email }} | {{ user.username }}</span><br>
+                        <a href="">Управление аккаунтом Галфвинд ID</a>
+                    </p>
+                </div>
+            </div>
+            {% endif %}
+        </div>
+    </div>
+</div>
+{% endblock %}
