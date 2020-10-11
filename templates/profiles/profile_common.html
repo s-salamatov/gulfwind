@@ -13,7 +13,7 @@
     <div class="row mt-3">
         <div class="col-md-3"></div>
         <div class="col-md-6">
-            <h1 class="text-center">Настройки</h1>
+            <h1 class="text-center">Профиль</h1>
             <hr>
             <div class="text-center">
                 <img src="{% if user.profile.image is not None %}{% cropped_thumbnail user.profile "cropping" scale=1 %}{% else %}{% static 'profiles/img/avatar.png' %}{% endif %}" class="img-fluid rounded-circle" alt="">
@@ -21,17 +21,9 @@
                     <span class="h4">{{ user.profile.get_full_name }}</span><br>
                     <span class="text-muted">{{ user.email }} | @{{ user.username }}</span><br>
                     <mark>{{ user.profile.bio }}</mark><br>
-                    <a href="{% url 'profiles:update' username=user.username %}" class="nav-link disabled">Управление аккаунтом Галфвинд ID [ скоро ]</a>
                 </p>
             </div>
             <hr>
-            <nav class="nav flex-column">
-                <a class="nav-link" href="{% url 'profiles:update' username=user.username %}">Аккаунт</a>
-                <a class="nav-link disabled" href="#">Уведомления [ скоро ]</a>
-                <a class="nav-link disabled" href="#">Не беспокоить [ скоро ]</a>
-                <a class="nav-link disabled" href="#">Внешний вид [ скоро ]</a>
-                <a class="nav-link text-danger" href="{% url 'account_logout' %}"><strong>Выйти</strong></a>
-            </nav>
         </div>
     </div>
 </div>

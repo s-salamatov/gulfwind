@@ -23,6 +23,7 @@ else:
     ]
 
 INSTALLED_APPS = [
+    'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
@@ -35,6 +36,8 @@ INSTALLED_APPS = [
     'allauth.socialaccount',
     'allauth.socialaccount.providers.vk',
     'crispy_forms',
+    'easy_thumbnails',
+    'image_cropping',
 
     'core',
     'authentication',
@@ -128,9 +131,19 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
-STATIC_ROOT = BASE_DIR / 'staticfiles/'
+STATIC_ROOT = BASE_DIR / 'staticfiles'
 
 STATICFILES_DIRS = [BASE_DIR / 'static']
+
+MEDIA_URL = '/media/'
+
+MEDIA_ROOT = BASE_DIR / 'media'
+
+from easy_thumbnails.conf import Settings as thumbnail_settings
+
+THUMBNAIL_PROCESSORS = (
+    'image_cropping.thumbnail_processors.crop_corners',
+) + thumbnail_settings.THUMBNAIL_PROCESSORS
 
 FILE_UPLOAD_MAX_MEMORY_SIZE = 52428800
 
@@ -190,7 +203,7 @@ ACCOUNT_EMAIL_CONFIRMATION_EXPIRE_DAYS = 2
 
 ACCOUNT_EMAIL_VERIFICATION = 'mandatory'
 
-ACCOUNT_DEFAULT_HTTP_PROTOCOL = 'https'
+ACCOUNT_DEFAULT_HTTP_PROTOCOL = 'http'
 
 ACCOUNT_LOGIN_ATTEMPTS_LIMIT = 3
 

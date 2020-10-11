@@ -67,8 +67,8 @@
                         </a>
                     </li>
                 {% endif %}
-                <li class="nav-item {% if request.path == '/settings' %}active{% endif %}">
-                    <a class="nav-link" href="{% url 'profiles:detail' username=user.username %}">
+                <li class="nav-item {% if request.path == '/account' %}active{% endif %}">
+                    <a class="nav-link" href="{% url 'profiles:settings' %}">
                         <svg width="1.3em" height="1.3em" viewBox="0 0 16 16"
                              class="bi bi-sliders d-inline-block align-middle"
                              fill="currentColor" xmlns="http://www.w3.org/2000/svg">
